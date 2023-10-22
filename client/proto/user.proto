@@ -1,0 +1,48 @@
+syntax = 'proto3';
+
+option go_package = "github.com/pramudyas69/Go-Grpc/client/proto";
+
+package proto;
+
+message RegisterRequest {
+  string fullname = 1;
+  string username = 2;
+  string email = 3;
+  string phone = 4;
+  string password = 5;
+}
+
+//message RegisterResponse {
+//  string id = 1;
+//  string name = 2;
+//  string email = 3;
+//  string phone = 4;
+//}
+
+message Empty {}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string token = 1;
+}
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+//message ValidateTokenResponse {
+//  string id = 1;
+//  string name = 2;
+//  string email = 3;
+//  string phone = 4;
+//}
+
+service UserService {
+  rpc Register(RegisterRequest) returns (Empty) {}
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc ValidateToken(ValidateTokenRequest) returns (Empty) {}
+}
